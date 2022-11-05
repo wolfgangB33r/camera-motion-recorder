@@ -1,6 +1,14 @@
 # Camera motion recorder
 
-A Docker container that records motion still images of configured images sources (cameras)
+A Docker container that records motion still images of configured images sources (cameras).
+
+## How to set up?
+
+- Download the container from Dockerhub.
+- Set the Docker container environment variable 'URL' to the address of your camera still image. This can be a local IP address or a publicly accessible camera image.
+- Set the Docker container environment variable 'folder' to '/motion/'.
+- Map a local folder to the Docker container folder with the name '/motion'.
+- Start the container.
 
 ## Environment variables and defaults
 
