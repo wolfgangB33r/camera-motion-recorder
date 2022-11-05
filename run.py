@@ -11,7 +11,7 @@ from io import BytesIO
 from datetime import datetime
 
 PIXEL_CHANGE_THRESHOLD = 30
-FREQUENCY = 1
+FREQUENCY = 10
 MOTION_PIXEL_THRESHOLD = 5000
 FOLDER = "./motion/"
 URL = ""
