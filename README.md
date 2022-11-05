@@ -16,7 +16,7 @@ Configures the size of individual objects that need to be detected to count as m
 MOTION_PIXEL_THRESHOLD = 5000
 
 Configures the mapped folder where we store the motion recordings.\
-FOLDER = "./motion/"
+FOLDER = "/motion/"
 
 Configures the URL where the container fetches the images.\
 URL = ""
