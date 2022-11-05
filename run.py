@@ -14,7 +14,7 @@ PIXEL_CHANGE_THRESHOLD = 30
 FREQUENCY = 1
 MOTION_PIXEL_THRESHOLD = 5000
 FOLDER = "./motion/"
-URL = "http://admin:12hallo12@192.168.0.179/ISAPI/Streaming/channels/101/picture"
+URL = ""
 
 last_pic = None
 image = None
@@ -41,21 +41,18 @@ def store_image(image):
 		os.makedirs(FOLDER + str(date.today()))
 	cv2.imwrite(FOLDER + str(date.today()) + "/" + datetime.now().strftime("camera-%d-%m-%Y-%H-%M-%S.png"), image)
 
-# Load the config params from environment variables in case they are set
-def load_configs():
-	# Get environment variables
-	if os.getenv('PIXEL_CHANGE_THRESHOLD') != None:
-		PIXEL_CHANGE_THRESHOLD = float(os.getenv('PIXEL_CHANGE_THRESHOLD'))
-	if os.getenv('FREQUENCY') != None:
-		FREQUENCY = float(os.environ.get('FREQUENCY'))
-	if os.getenv('MOTION_PIXEL_THRESHOLD') != None:
-		MOTION_PIXEL_THRESHOLD = float(os.environ.get('MOTION_PIXEL_THRESHOLD'))
-	if os.getenv('FOLDER') != None:
-		FOLDER = os.environ.get('FOLDER')
-	if os.getenv('URL') != None:
-		URL = os.environ.get('URL')
 
-load_configs()
+# Get environment variables
+if os.getenv('PIXEL_CHANGE_THRESHOLD') != None:
+	PIXEL_CHANGE_THRESHOLD = float(os.getenv('PIXEL_CHANGE_THRESHOLD'))
+if os.getenv('FREQUENCY') != None:
+	FREQUENCY = float(os.environ.get('FREQUENCY'))
+if os.getenv('MOTION_PIXEL_THRESHOLD') != None:
+	MOTION_PIXEL_THRESHOLD = float(os.environ.get('MOTION_PIXEL_THRESHOLD'))
+if os.getenv('FOLDER') != None:
+	FOLDER = os.environ.get('FOLDER')
+if os.getenv('URL') != None:
+	URL = os.environ.get('URL')
 
 while(True):
 	#blur = load_image('./testimages/1.jpeg')
