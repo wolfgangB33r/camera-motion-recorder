@@ -90,17 +90,17 @@ while(True):
 		print("MOTION")
 		store_image(image)
 
-	'''
-	This is the window part that is not usable in a headless docker container. Uncomment if you run it on a local machine
-	cv2.imshow("blur", blur)
-	cv2.imshow("diff", diff_frame)
-	cv2.imshow("thresh", thresh_frame)
+	
+	#This is the window part that is not usable in a headless docker container. Uncomment if you run it on a local machine
+	#cv2.imshow("blur", blur)
+	#cv2.imshow("diff", diff_frame)
+	#cv2.imshow("thresh", thresh_frame)
 	
 	key = cv2.waitKey(1)
 	# if q entered whole process will stop
 	if key == ord('q'):
 		break
-	'''
+	
 
 	# Slow it down a bit
 	time.sleep(FREQUENCY)

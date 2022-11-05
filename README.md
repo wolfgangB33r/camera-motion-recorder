@@ -1,6 +1,6 @@
 # Camera motion recorder
 
-A Docker container that records motion still images of configured images sources (cameras).
+A Docker container that records motion still images of configured images sources (cameras). Read the details about this motion recorder Docker container in my [blog post](https://www.smartlab.at/run-a-camera-motion-detector-in-a-docker-container/).
 
 ## How to set up?
 
