@@ -1,7 +1,8 @@
 # python3 -m pip install opencv-python
 
 # importing OpenCV, time library
-import cv2, time, np, os
+import cv2, time, os
+import numpy as np
 from datetime import date
 from PIL import Image
 import requests
