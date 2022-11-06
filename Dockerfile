@@ -1,4 +1,5 @@
-FROM python:3.7
+#FROM python:3.7
+FROM python:3.10-slim-bullseye
 LABEL maintainer="Wolfgang Beer @wolfgangB33r"
 
 WORKDIR /app
