@@ -28,3 +28,9 @@ FOLDER = "/motion/"
 
 Configures the URL where the container fetches the images.\
 URL = ""
+
+Enables the output of the diff frame image.\
+ENABLE_STORE_DIFF_FRAME = False
+
+Enables the output of the threshold frame image.\
+ENABLE_STORE_THRESHOLD_FRAME = False

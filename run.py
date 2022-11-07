@@ -16,6 +16,8 @@ FREQUENCY = 10
 MOTION_PIXEL_THRESHOLD = 5000
 FOLDER = "./motion/"
 URL = ""
+ENABLE_STORE_DIFF_FRAME = False
+ENABLE_STORE_THRESHOLD_FRAME = False
 
 last_pic = None
 image = None
@@ -36,11 +38,11 @@ def load_image_from_url(url):
 	print("[%dms] %s" % ((time.time() * 1000 - start_time), "Finished reading image"))
 	return cv2_image
 
-def store_image(image):
-	print(FOLDER + str(date.today()) + "/" + datetime.now().strftime("camera-%d-%m-%Y-%H-%M-%S.png"))
-	if not os.path.isdir(FOLDER + str(date.today())):
-		os.makedirs(FOLDER + str(date.today()))
-	cv2.imwrite(FOLDER + str(date.today()) + "/" + datetime.now().strftime("camera-%d-%m-%Y-%H-%M-%S.png"), image)
+def store_image(image, subdir):
+	print(FOLDER + subdir + str(date.today()) + "/" + datetime.now().strftime("camera-%d-%m-%Y-%H-%M-%S.png"))
+	if not os.path.isdir(FOLDER + subdir + str(date.today())):
+		os.makedirs(FOLDER + subdir + str(date.today()))
+	cv2.imwrite(FOLDER + subdir + str(date.today()) + "/" + datetime.now().strftime("camera-%d-%m-%Y-%H-%M-%S.png"), image)
 
 
 # Get environment variables
@@ -57,6 +59,10 @@ if os.getenv('FOLDER') != None:
 	FOLDER = f_name
 if os.getenv('URL') != None:
 	URL = os.environ.get('URL')
+if os.getenv('ENABLE_STORE_DIFF_FRAME') != None:
+	ENABLE_STORE_DIFF_FRAME = bool(os.environ.get('ENABLE_STORE_DIFF_FRAME'))
+if os.getenv('ENABLE_STORE_THRESHOLD_FRAME') != None:
+	ENABLE_STORE_THRESHOLD_FRAME = bool(os.environ.get('ENABLE_STORE_THRESHOLD_FRAME'))
 
 while(True):
 	#blur = load_image('./testimages/1.jpeg')
@@ -91,7 +97,11 @@ while(True):
 		if cv2.contourArea(contour) < MOTION_PIXEL_THRESHOLD:
 			continue
 		print("MOTION")
-		store_image(image)
+		store_image(image, "")
+		if ENABLE_STORE_DIFF_FRAME:
+			store_image(diff_frame, "diff/")
+		if ENABLE_STORE_THRESHOLD_FRAME:
+			store_image(thresh_frame, "threshold/")	
 
 	
 	#This is the window part that is not usable in a headless docker container. Uncomment if you run it on a local machine
