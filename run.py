@@ -51,7 +51,10 @@ if os.getenv('FREQUENCY') != None:
 if os.getenv('MOTION_PIXEL_THRESHOLD') != None:
 	MOTION_PIXEL_THRESHOLD = float(os.environ.get('MOTION_PIXEL_THRESHOLD'))
 if os.getenv('FOLDER') != None:
-	FOLDER = os.environ.get('FOLDER')
+	f_name = os.environ.get('FOLDER')
+	if not f_name.endswith('/'): # add slash character if its missing
+		f_name = f_name + '/'
+	FOLDER = f_name
 if os.getenv('URL') != None:
 	URL = os.environ.get('URL')
 
