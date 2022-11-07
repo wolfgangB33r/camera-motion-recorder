@@ -23,7 +23,7 @@ FREQUENCY = 5
 Configures the size of individual objects that need to be detected to count as motion.\
 MOTION_PIXEL_THRESHOLD = 5000
 
-Configures the mapped folder where we store the motion recordings.\
+Configures the mapped folder where we store the motion recordings. Don't forget the trailing slash in the folder path name!\
 FOLDER = "/motion/"
 
 Configures the URL where the container fetches the images.\
